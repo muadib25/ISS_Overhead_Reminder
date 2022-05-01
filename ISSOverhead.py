@@ -9,6 +9,7 @@ MY_LAT = float(input("What is your latitude?: "))
 MY_LONG = float(input("What is your longitude?: "))
 SENDER_EMAIL = input("Enter your email address: ")
 SENDER_PASSWORD = input("Enter your email password: ")
+SMTP_SERVER = input("Enter your provider\\'s SMTP suffix, e.g.'smtp.gmail.com' for Gmail: ")
 RECIPIENT_EMAIL = input("Enter the Reminder recipient's email: ")
 
 
@@ -55,7 +56,7 @@ def look_up():
     # If the ISS is close to my current position, and it is currently dark
     if is_iss_near() and is_it_dark():
         # Then email me to tell me to look up.
-        with smtplib.SMTP("smtp.gmail.com") as connection:
+        with smtplib.SMTP(SMTP_SERVER) as connection:
             connection.starttls()
             connection.login(SENDER_EMAIL, SENDER_PASSWORD)
             connection.sendmail(
