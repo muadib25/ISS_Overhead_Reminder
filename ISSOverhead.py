@@ -9,7 +9,7 @@ MY_LAT = float(input("What is your latitude?: "))
 MY_LONG = float(input("What is your longitude?: "))
 SENDER_EMAIL = input("Enter your email address: ")
 SENDER_PASSWORD = input("Enter your email password: ")
-SMTP_SERVER = input("Enter your provider\\'s SMTP suffix, e.g.'smtp.gmail.com' for Gmail: ")
+SMTP_SERVER = input("Enter your provider\'s SMTP suffix, e.g.'smtp.gmail.com' for Gmail: ")
 RECIPIENT_EMAIL = input("Enter the Reminder recipient's email: ")
 
 
