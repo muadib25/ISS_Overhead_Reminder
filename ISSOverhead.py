@@ -13,8 +13,6 @@ SMTP_SERVER = input("Enter your provider\'s SMTP suffix, e.g.'smtp.gmail.com' fo
 RECIPIENT_EMAIL = input("Enter the Reminder recipient's email: ")
 
 
-
-
 # Your position is within +5 or -5 degrees of the ISS position.
 def look_up():
     """Sends an email to the recipient when it is dark and the ISS is overhead"""
