@@ -20,7 +20,6 @@ def look_up():
     def is_iss_near():
         """Returns True if the ISS is overhead"""
         if MY_LAT+5 >= iss_latitude >= MY_LAT-5 and MY_LONG+5 >= iss_longitude >= MY_LAT-5:
-            print("Look up")
             return True
 
     def is_it_dark():
