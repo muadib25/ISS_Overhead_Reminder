@@ -17,7 +17,6 @@ RECIPIENT_EMAIL = input("Enter the Reminder recipient's email: ")
 def look_up():
     """Sends an email to the recipient when it is dark and the ISS is overhead"""
 
-    # TODO 2. Check if ISS is near only if it is dark.
     def is_iss_near():
         """Returns True if the ISS is overhead"""
         if MY_LAT+5 >= iss_latitude >= MY_LAT-5 and MY_LONG+5 >= iss_longitude >= MY_LAT-5:
@@ -32,6 +31,7 @@ def look_up():
         else:
             return False
 
+    # Getting info about the ISS
     response = requests.get(url="http://api.open-notify.org/iss-now.json")
     response.raise_for_status()
     data = response.json()
@@ -45,6 +45,7 @@ def look_up():
         "formatted": 0,
     }
 
+    # Getting info about local sunrise-sunset times
     response = requests.get("https://api.sunrise-sunset.org/json", params=parameters)
     response.raise_for_status()
     data = response.json()
@@ -53,18 +54,20 @@ def look_up():
 
     time_now = datetime.now()
 
-    # If the ISS is close to my current position, and it is currently dark
-    if is_iss_near() and is_it_dark():
-        # Then email me to tell me to look up.
-        with smtplib.SMTP(SMTP_SERVER) as connection:
-            connection.starttls()
-            connection.login(SENDER_EMAIL, SENDER_PASSWORD)
-            connection.sendmail(
-                from_addr=SENDER_EMAIL,
-                to_addrs=RECIPIENT_EMAIL,
-                msg=f"Subject:ISS is now overhead!\n\n"
-                    f"Look up, ISS is out there passing the night sky!"
-            )
+    # If it is currently dark,
+    if is_it_dark():
+        # And if the ISS is close to my current position,
+        if is_iss_near():
+            # Then email me to tell me to look up.
+            with smtplib.SMTP(SMTP_SERVER) as connection:
+                connection.starttls()
+                connection.login(SENDER_EMAIL, SENDER_PASSWORD)
+                connection.sendmail(
+                    from_addr=SENDER_EMAIL,
+                    to_addrs=RECIPIENT_EMAIL,
+                    msg=f"Subject:ISS is now overhead!\n\n"
+                        f"Look up, ISS is out there crossing the night sky!"
+                )
 
     print(time_now)
     print(iss_latitude)
