@@ -24,7 +24,7 @@ For that, you can use a map service such as this: https://www.latlong.net/
 It then asks for your email address as well as your associated password. 
 You may want to use a test email account, since typing your password like this could pose a security risk.
 
-Ultimately the program prompts for the email address to receive the Reminder, which could also be either your sender email or your primary email.
+Ultimately the program prompts for the email address to receive the Reminder, which could be either your sender email or your primary email.
 
 **DISCLAIMER:** I am not responsible for any loss or acquisition by third parties of data or sensitive information that may occur during the execution of the program. You are solely responsible for the data you input through the prompts of this program. The source code of this program is quite transparent in what happens upon execution of the program so no data is sent to others. Regardless, you are encouraged to take appropriate measures as far as data security is concerned and make use of test email accounts.
 
